@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style-type: none; /*Убирает точки*/
+}
+ul {
+    margin: 0px; /*Отступы*/
+    padding: 4px;
+}
+ul li {
+    display: inline; /* Строчное отображение списка */
+    margin-right: 50px;
+}
+.scroll {
+    height: 1000px;
+    overflow: scroll;
+}
+.head {
+    width: auto; 
+    background-color: rgb(71, 71, 71);
+    margin: 0 0 0 0;
+}
+.div-image{
+    width: auto;
+    margin: 0px 0px 0px 0px;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+}
+.Image {
+    width: 200px;
+    height: 250px; 
+    margin: 0 0 0 6px;
+}
+.main {
+    width: auto;
+    height: 1000px;
+    margin: 20px 0px 0px 30px;
+    display: flex;
+}
+.div-text {
+    background-color: white;
+    width: auto; 
+    margin: 0px 0px 0px 20px;
+}
+.image-headers {
+    font-size: 20px;
+    margin-top: auto;
+    padding: 10px;
+}
+.nav a {
+    text-decoration: none;
+    color: white;
+    top: 0;
+    right: 0;
+    margin: 12px;
+}
+.nav{
+    margin: 0 -40px 0 0;
+}
+.div-text a {
+    text-decoration: none;
+    color: black;
+}
+.div-text p {
+    font-weight: 900;
+    font-size: 30px;
+}
+.div-head {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+body {
+    background-image: url("../img/background.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+.div-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
