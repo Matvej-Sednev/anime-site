@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Карусель</title>
+  <style>
+    * {
+      margin: 0;
+    }
+    .carousel {
+      width: 700px; /* Ширина карусели */
+      height: 140px;
+      margin: 0 auto;
+      border: 10px solid black;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden; /* Скрываем лишние элементы */
+    }
+    .carousel__inner{
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      width: 700px; /* Ширина всех слайдов */
+      transition: left 1s ease;
+    }
+    .carousel img {
+      max-width: 100px;
+      max-height: 140px;
+      min-height: 140px;
+      width: 100%;
+      margin-right: 3px; /* Отступ между слайдами */
+    }
+    .carousel__indicators {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+    }
+    .carousel__indicators span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .carousel__indicators span.active {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel">
+    <div class="carousel__inner">
+      <!-- Слайды будут добавляться динамически -->
+    </div>
+    <div class="carousel__indicators">
+      <!-- Индикаторы будут добавляться динамически -->
+    </div>
+  </div>
+
+  <script>
+    const carouselInner = document.querySelector('.carousel__inner');
+    const widthoffset = document.querySelector('.carousel').clientWidth;
+    carouselInner.style.width = 7 * widthoffset + 'px'; // Ширина 7 слайдов
+    const imageUrls = [
+      "Карманы лета.jpeg",
+      "Убивая слизней триста лет, я достигла максимального уровня 2.jpeg",
+      "star_child.jpg",
+      "Младшая сестра друга досаждает.jpeg",
+      "Младшая сестра друга досаждает.jpeg",
+      "Младшая сестра друга досаждает.jpeg",
+      "Младшая сестра друга досаждает.jpeg",
+    ];
+    let currentSlide = 0;
+    const initSlider = () => {
+      for (let i = 0; i < imageUrls.length; i++) {
+        const img = document.createElement('img');
+        img.alt = '';
+        img.src = '/src/img/' + imageUrls[i];
+        carouselInner.appendChild(img);
+      }
+      createIndicators();
+    };
+
+    const nextSlide = () => {
+      currentSlide++;
+      if (currentSlide >= imageUrls.length) {
+        currentSlide = 0;
+        carouselInner.style.left = '0px';
+      }
+      carouselInner.style.left = '-' + (currentSlide * (widthoffset + 3)) + 'px'; // Сдвиг на ширину + отступ
+      updateIndicators();
+    };
+
+    const createIndicators = () => {
+      const indicators = document.querySelector('.carousel__indicators');
+      for (let i = 0; i < imageUrls.length; i++) {
+        const indicator = document.createElement('span');
+        indicator.addEventListener('click', () => {
+          currentSlide = i;
+          carouselInner.style.left = '-' + (currentSlide * (widthoffset + 3)) + 'px'; // Сдвиг на ширину + отступ
+          updateIndicators();
+        });
+        indicators.appendChild(indicator);
+      }
+    };
+
+    const updateIndicators = () => {
+      const indicators = document.querySelectorAll('.carousel__indicators span');
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    };
+
+    initSlider();
+    setInterval(nextSlide, 2500);
+  </script>
+</body>
+</html>
